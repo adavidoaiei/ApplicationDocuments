@@ -1,0 +1,101 @@
+﻿@using ActeAuto.Helpers
+@{
+    //var version = System.Configuration.ConfigurationManager.AppSettings["version"];
+    var version = Guid.NewGuid().ToString().Replace("-", "");
+}
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+
+    <meta name="description" content="Acte Auto">
+    <meta name="keywords" content="acte auto, cerere de inmatriculare, cerere autorizare provizorie, cerere numere preferentiale, cerere radiere definitiva, formulare tipizate">
+    <meta charset="utf-8" />
+    <meta name="language" content="romanian" />
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+    <script type="text/javascript">
+        function changeDocument() {
+            $("#title").text($("#select option:selected").text());
+            $.get("Templates/" + $("#select option:selected").text().replace(/ /g, "_").toLowerCase() + "/" + $("#select option:selected").text().replace(/ /g, "_").toLowerCase() + ".html?version=@version", function (data) {
+                $('#document').html(String.format(data, "Templates/" + $("#select option:selected").text().replace(/ /g, "_").toLowerCase() + "/" + $("#select option:selected").text().replace(/ /g, "_").toLowerCase() + ".png"));
+                $(".datepicker").datepicker();
+            });
+        }
+    </script>
+    <script src="~/Scripts/code.js?version=@version"></script>
+    <title>E-Documente</title>
+</head>
+<body>
+    @if (Request.IsAuthenticated == true || Request.Url.AbsoluteUri.Contains("staging") == false)
+    {   
+        <div id="header" style="height: 70px; background-color: white;">
+            <div style="font-size: 30px; color: black; padding-top: 15px; padding-left: 10px;" id="title">
+                Cerere de inmatriculare
+            </div>
+            @if (!Request.IsAuthenticated)
+            {
+                <div style="float: right;" class="username">
+                    Email&nbsp;<input type="text" id="name" class="input" value="" />
+                    &nbsp;
+                    Parola&nbsp;<input type="password" id="password" class="input" value="" />
+                    <input type="submit" value="Login" id="logeaza" class="login" onclick="Login();" />
+                    <input type="submit" value="Creeaza Cont" class="create" onclick="CreateAccountWindow();" />
+                </div>
+            }
+        </div>
+
+        <div id="meniu-container" style="background-color: #f5f5f5; color: white; height: 24px; padding-bottom: 10px; border-top: solid 1px #e5e5e5; border-bottom: solid 1px #e5e5e5;">
+            <div style="margin-left: 10px;">
+                <div style="color: black; font-size: 14px; float: left; padding-top: 4px;">
+                    Selecteaza document
+                   @Html.DropDownDocumente(Convert.ToInt32(Session["UserId"]), Request.Url.AbsoluteUri)
+                </div>
+                <div style="padding-top: 4px; margin-left: 10px; float: left;" id="meniu">
+                    @*<a href="#" onclick="CreateSablon();" class="item-menu">Creeaza Sablon Document</a>
+                    <span style="color: black;">|</span>*@
+                    <a href="#" onclick="SalveazaEditare();" class="item-menu">Salveaza editare</a>
+                    <span style="color: black;">|</span>
+                    <a href="#" onclick="SalveazaDocumentWindow();" class="item-menu">Salveaza ca nou document</a>
+                    <span style="color: black;">|</span>
+                    <a href="#" onclick="GeneratePDF();" class="item-menu">Printeaza PDF</a>
+                    <span style="color: black;">|</span>
+                   @* <a href="#" onclick="GenerateDOC();" class="item-menu">Printeaza DOC</a>
+                    <span style="color: black;">|</span>*@
+                </div>
+                <br style="clear: both;" />
+            </div>
+        </div>
+
+        @RenderBody()
+    }
+    else
+    {
+        @Html.Action("Login", "Default");
+    }
+
+    @* @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)*@
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+        _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+        _gaq.push(['_setAccount', 'UA-37828548-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+</body>
+</html>

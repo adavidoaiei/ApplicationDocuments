@@ -1,0 +1,34 @@
+﻿@model ActeAuto.Models.User
+@{
+    ViewBag.Title = "Login";
+    Layout = "";
+}
+
+@Styles.Render("~/Content/css")
+
+@using (Html.BeginForm("Login", "Default"))
+{
+    <div style="margin-top: 100px; width: 300px; margin-left: auto; margin-right: auto;">
+        Staging <br />
+        @Html.ValidationSummary(true, "Autentificare esuata. Verificati-va datele de login.")
+        <fieldset>
+            <legend>Autentificare</legend>
+            <div class="editor-label">
+                Utilizator
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(u => u.UserName)
+                @Html.ValidationMessageFor(u => u.UserName)
+            </div>
+            <div class="editor-label">
+                Parola
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(u => u.Password)
+                @Html.ValidationMessageFor(u => u.Password)
+            </div>
+            <input type="submit" value="Autentifica" style="background-color: black; color: white; border: 0; width: 150px; float: right;" />
+        </fieldset>
+    </div>
+}
+

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="ro">
+    <head>
+
+        <meta name="description" content="Formulare Tipizate">
+        <meta name="keywords" content="formulare tipizate, cerere inmatriculare">
+        <meta charset="utf-8" />
+        <meta name="language" content="romanian" />
+        <meta name="viewport" content="width=device-width" />
+
+        <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        
+        <link href="../../Content/site.css" rel="stylesheet"/>
+
+        <script src="/Scripts/modernizr-2.5.3.js"></script>
+
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+        <script src="../../Scripts/code.js"></script>
+        <title>Completare Formulare Tipizate</title>
+    </head>
+    <body>
+        <div style="height: 70px; background-color: white;">
+            <div style="font-size: 30px; color: black; padding-top: 15px; padding-left: 10px;" id="title">
+                Cerere de inmatriculare
+            </div>
+        </div>
+        <div style="background-color: #f5f5f5; color: white; height: 20px; padding-bottom: 10px; border-top: solid 1px #e5e5e5; border-bottom: solid 1px #e5e5e5;">
+            <div style="margin-left: 10px;">
+                <div style="color: black; font-size: 14px; float: left; padding-top: 4px;">
+                    Selecteaza formularul tipizat 
+<select onchange="change()" id="select">
+<optgroup label="Acte Auto">
+<option value="cerere_de_inmatriculare">Cerere de inmatriculare</option></optgroup>
+<optgroup label="Acte Angajat">
+</optgroup>
+<optgroup label="Contabilitate">
+<option value="factura">Factura</option></optgroup>
+</select>
+                </div>
+                <img src="../../Images/print.png" alt="Genereaza PDF" onclick="GeneratePDF()" style="float: left;" title="Genereaza document PDF pentru printare" />
+                <br style="clear: both;" />
+            </div>
+        </div>
+        
+
+<div id="dialog" title="Trimite-ne parerea dvstra" style="display: none;">
+  <select id="optiuni">
+      <option value="1">Spune-ne ce formulare mai ai nevoie</option>
+      <option value="2">Sugestie</option>
+      <option value="3">Raporteaza Problema</option>
+  </select>
+  <br />
+  <br />
+  Descriere
+  <textarea id="descriere" cols="20">
+
+  </textarea>
+  <input type="submit" value="Trimite" style="background-color: black; color: white;" onclick="SendMesaj()" />
+</div>
+
+<div class="leftarrowdiv" style="position: absolute; padding-top: 5px; width: 14%; right: 2px; margin-top: 2px;">
+    &nbsp;&nbsp;Trimite-ne parerea dvstra<br />
+    <ul style="margin-left: -20px;">
+        <li><a href="#" onclick="showPopup('1');">Spune-ne de ce formulare mai ai nevoie</a></li>
+        <li><a href="#" onclick="showPopup('2');">Sugestie</a></li>
+        <li><a href="#" onclick="showPopup('3');">Raporteaza Problema</a> <br /></li>    
+    </ul>
+</div>
+
+<div class="rightarrowdiv" style="position: absolute; width: 14%; padding: 8px; text-align: justify; margin-left: 2px; margin-top: 2px;">
+    Se completeaza campurile cu gri si se apasa butonul din dreapta
+    care va genera documentul PDF cu campurile completate gata de print
+    <br /><br />
+    Aveti nevoie de Adobe Acrobate Reader pentru deschidere PDF
+    si Internet Explorer minim 8 sau Google Chrome 
+</div>
+
+<div id="document">
+    <div style="background-image:url('cerere_de_inmatriculare.png'); width: 100%; height: 100%;" id="continut">
+    <input id="Nume" type="text" style="top: 298px; left: 192px; width: 540px;" />
+    <input id="Tata" type="text" style="top: 372px; left: 150px; width: 290px;" />
+    <input id="Mama" type="text" style="top: 370px; left: 490px; width: 250px;" />
+    <input id="DataNasterii" type="text" style="top: 400px; left: 222px; width: 94px;" />
+    <input id="Domiciliul" type="text" style="top: 400px; left: 490px; width: 250px;" />
+    <input id="Strada" type="text" style="top: 430px; left: 150px; width: 180px;" />
+    <input id="Nr" type="text" style="top: 430px; left: 370px; width: 16px;" />
+    <input id="Bl" type="text" style="top: 430px; left: 420px; width: 16px;" />
+    <input id="Sc" type="text" style="top: 430px; left: 480px; width: 16px;" />
+    <input id="Ap" type="text" style="top: 430px; left: 528px; width: 16px;" />
+    <input id="Judet" type="text" style="top: 430px; left: 600px; width: 140px;" />
+    <input id="Marca" type="text" style="top: 460px; left: 410px; width: 280px;" />
+    <input id="SerieSasiu" type="text" style="top: 490px; left: 180px; width: 300px;" />
+    <input id="Culoare" type="text" style="top: 490px; left: 560px; width: 188px;" />
+    <input id="AnFabricatie" type="text" style="top: 524px; left: 191px; width: 188px;" />
+    <input id="Operatie" type="text" style="top: 604px; left: 390px; width: 350px;" />
+    <input id="DeLa" type="text" style="top: 632px; left: 140px; width: 290px;"  />
+    <input id="Data" type="text" style="top: 870px; left: 100px; width: 200px;" />
+</div>
+</div>
+
+<br style="clear: both;" />
+
+</body>
+</html>

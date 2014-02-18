@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-1.7-development-only.js"></script>
+    <title></title>
+    <script>
+        $(document).ready(function () {
+            $("p").keydown(function (e) {
+                $("p").append(e.data);
+            })
+        });
+
+        function getSelText() {
+            var txt = '';
+            if (window.getSelection) {
+                txt = window.getSelection();
+            } else if (document.getSelection) {
+                txt = document.getSelection();
+            } else if (document.selection) {
+                txt = document.selection.createRange().text;
+            } else return;
+            return txt;
+        }
+
+        function MakeBold() {
+            debugger;
+            var selectedText = getSelText().toString();
+            var val = $("#textarea").text();
+            $("#textarea").html(val.replace(selectedText, "<b>" + selectedText + "</b>"));
+        }
+    </script>
+    <style type="text/css">
+        #textarea {
+            -moz-appearance: textfield-multiline;
+            -webkit-appearance: textarea;
+            border: 1px solid gray;
+            font: medium -moz-fixed;
+            font: -webkit-small-control;
+            height: 28px;
+            overflow: auto;
+            padding: 2px;
+            resize: both;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My First Heading</h1>
+    <input type="button" value="Bold" onclick="MakeBold();" />
+    <div id="textarea" contenteditable>My first paragraph.</div>
+</body>
+</html>
+

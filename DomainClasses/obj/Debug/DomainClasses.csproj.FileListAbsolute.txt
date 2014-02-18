@@ -1,0 +1,5 @@
+D:\ActeAuto\DomainClasses\bin\Debug\DomainClasses.dll
+D:\ActeAuto\DomainClasses\bin\Debug\DomainClasses.pdb
+D:\ActeAuto\DomainClasses\obj\Debug\DomainClasses.csprojResolveAssemblyReference.cache
+D:\ActeAuto\DomainClasses\obj\Debug\DomainClasses.dll
+D:\ActeAuto\DomainClasses\obj\Debug\DomainClasses.pdb

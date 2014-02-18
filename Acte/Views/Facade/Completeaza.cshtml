@@ -1,0 +1,152 @@
+﻿@using ActeAuto.Helpers
+@model ActeAuto.Models.Document
+@{
+    ViewBag.Title = "Home Page";
+}
+<div id="dialog-windows">
+    <div title="Download Doc" id="downloadDoc" style="display: none;">
+    </div>
+    <div title="Date incorecte" id="loginFailed" style="display: none;">
+        <br />
+            Email sau Parola incorecta
+        <br />
+        <br />
+        <input type="button" style="background-color: black; width: 100px; float: right; color: white; border: 0;" value="Inchide" onclick="CloseLoginFailed();" />
+    </div>
+
+    <div id="dialog" title="Trimite-ne parerea dvstra" style="display: none;">
+        <select id="optiuni">
+            <option value="1">Spune-ne de ce formulare mai ai nevoie</option>
+            <option value="2">Sugestie</option>
+            <option value="3">Raporteaza Problema</option>
+        </select>
+        <br />
+        <br />
+        Descriere
+        <textarea id="descriere" cols="20">
+        </textarea>
+        <input type="submit" value="Trimite" style="background-color: black; color: white; border: 0;" onclick="SendMesaj()" />
+    </div>
+
+    <div id="creare_cont" title="Creeaza cont" style="display: none;">
+        <div style="padding-left: 20px;">
+            <br />
+            <div id="error" style="padding: 5px; color: red;"></div>
+            <div id="container_createaccount">
+                Nume Firma<br />
+                <input id="nume_firma" type="text" /><br />
+                Email<br />
+                <input id="email" type="text" /><br />
+                Parola<br />
+                <input id="parola_create" type="password" /><br />
+                Confirmare Parola<br />
+                <input id="confirmare_parola" type="password" /><br />
+                <br />
+                <input type="submit" value="Creeaza Cont" onclick="CreateAccount();" style="background-color: black; color: white; border: 0;" />
+                <br />
+                <br />
+            </div>
+            <div id="mesage_createaccount" style="display: none;">
+                <br />
+                Contul a fost creat cu succes.<br />
+                Va puteti loga si sa utilizati aplicatia.<br />
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+
+    <div id="preferences" title="Preferinte" style="display: none;">
+        <br />
+        <input id="coredocuments" type="checkbox" value="" />Afiseaza documentele din trunchiul comun<br />
+        <input id="customdocuments" type="checkbox" value="" />Afiseaza documentele personalizate<br />
+        <br />
+        <input type="submit" onclick="SavePreferences();" value="Salveaza" style="float: right; background-color: black; color: white; border: 0; width: 150px;" />
+    </div>
+
+    <div id="dialogSalveazaDocument" title="Salvati document" style="display: none;">
+        <br />
+        Introduceti numele documentului:
+            <input id="name_document" type="text" value="" style="width: 240px !important;" />
+        <br />
+        <br />
+        <div style="float: right;">
+            <input type="submit" value="Salveaza" style="width: 120px; background-color: black; color: white; border: 0px;" onclick="SalveazaDocument();" />
+            <input type="submit" value="Cancel" style="width: 120px; background-color: black; color: white; border: 0px;" onclick="CloseSD();" />
+        </div>
+        <br style="clear: both;" />
+    </div>
+
+    <div id="dialogCreeazaSablonDocument" title="Creeaza Sablon Document">
+
+    </div>
+</div>
+
+<div id="content-middle" style="position: relative;">
+    <div class="leftarrowdiv" style="position: absolute; padding-top: 5px; width: 14%; right: 2px; margin-top: 2px;">
+        &nbsp;&nbsp;Trimite-ne parerea dvstra<br />
+        <ul style="margin-left: -20px;">
+            <li><a href="#" onclick="showPopup('1');">Spune-ne de ce formulare mai ai nevoie</a></li>
+            <li><a href="#" onclick="showPopup('2');">Sugestie</a></li>
+            <li><a href="#" onclick="showPopup('3');">Raporteaza Problema</a>
+                <br />
+            </li>
+        </ul>
+        &nbsp;Pentru demo logati-va cu
+        <br />
+        <div style="padding: 5px;">
+            &nbsp; &nbsp;Email: demo
+            <br />
+            &nbsp; &nbsp;Parola: demo
+            <br />
+        </div>
+        &nbsp;Contact
+        <br />
+        <div style="padding: 5px;">
+            &nbsp; &nbsp;Telefon: 0748835642
+                <br />
+        </div>
+    </div>
+    <div class="rightarrowdiv" style="position: absolute; width: 14%; max-height: 270px; padding: 8px; text-align: justify; margin-left: 2px; margin-top: 2px;">
+        Se completeaza campurile cu gri si se apasa butonul din dreapta
+    care va genera documentul PDF cu campurile completate gata de print
+        <br />
+        <br />
+        Aveti nevoie de Adobe Acrobate Reader pentru deschidere PDF
+        si Google Chrome sau Internet Explorer minim 8 
+        <br />
+        Rezolutia minima
+            <br />
+        1280 x 1024
+    </div>
+    <div id="cautare" style="position: absolute; width: 14%; padding: 8px; text-align: justify; margin-left: 2px; padding-top: 300px !important;">
+        Cautare document
+            <br />
+        @Html.DropDownDocumenteSearch(Convert.ToInt32(Session["UserId"]), Request.Url.AbsoluteUri)
+        <div id="fields">
+        </div>
+        <div id="valueContainer" style="display: none;">
+            Valoare
+            <input type="text" id="value" style="width: 150px;" /><br />
+            <input type="submit" id="cauta" onclick="Cauta();" value="Cauta" style="width: 150px; background-color: black; color: white; border: 0;" />
+        </div>
+        Documente
+        <div id="listdoc" style="width: 150px; border: solid 1px #e5e5e5;">
+        </div>
+        <br />
+    </div>
+    <div id="document">
+    </div>
+</div>
+
+<br style="clear: both;" />
+
+<input type="hidden" id="edit" value="" />
+@if (Request.IsAuthenticated == true){
+    <input type="hidden" id="islogged" value="true" />
+} else {
+    <input type="hidden" id="islogged" value="false" />
+}
+
+
+

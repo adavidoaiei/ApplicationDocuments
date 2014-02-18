@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+    <script src="Scripts/jquery-1.7.1.js"></script>
+    <link rel="stylesheet" href="Content/Site.css" />
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-1.7-development-only.js"></script>
+    <title></title>
+    <script>    
+
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                       .toString(16)
+                       .substring(1);
+        };
+
+        function guid() {
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                   s4() + '-' + s4() + s4() + s4();
+        }
+
+        function getSelText() {
+            var txt = '';
+            if (window.getSelection) {
+                txt = window.getSelection();
+            } else if (document.getSelection) {
+                txt = document.getSelection();
+            } else if (document.selection) {
+                txt = document.selection.createRange().text;
+            } else return;
+            return txt;
+        }
+
+        function MakeBold() {
+            //debugger;
+            var selectedText = getSelText().toString();
+            var val = $("#textarea").html();
+            $("#textarea").html(val.replace(selectedText, "<b>" + selectedText + "</b>"));
+            GetCode();
+        }
+
+        function GetCode() {
+            $("#htmlcode").text($("#textarea").html());
+        }
+
+        function ChangeFontSize() {
+            //debugger;
+            var selectedText = getSelText().toString();
+            var val = $("#textarea").html();
+            var font_size = $("#font-size").val();
+            var id = guid();
+            var output = "<span id=\"" + id + "\">" + selectedText + "</span>"            
+            $("#textarea").html(val.replace(selectedText, output));
+            $("#" + id).css("font-size", font_size + "px");
+            GetCode();
+        }
+
+        function TextAlignCenter() {
+            var selectedText = getSelText().toString();
+            var val = $("#textarea").html();
+            var id = guid();
+            var output = "<center id=\"" + id + "\">" + selectedText + "</center>"
+            $("#textarea").html(val.replace(selectedText, output));
+            //$("#" + id).css("margin-left", "auto");
+            //$("#" + id).css("margin-right", "auto");
+            //$("#" + id).css("width", "100px");
+            GetCode();
+        }
+
+        function TextAlignJustify() {
+            var selectedText = getSelText().toString();
+            var val = $("#textarea").html();
+            var id = guid();
+            var output = "<span id=\"" + id + "\">" + selectedText + "</span>"
+            $("#textarea").html(val.replace(selectedText, output));
+            $("#" + id).css("text-align", "justify");            
+            GetCode();
+        }
+
+        function SetMargins() {
+            //debugger;
+            var margins = $("#margins").val();
+            if (800 - 2 * margins >= 0) {
+                $("#textarea").css("width", 800 - 2 * margins);
+                $("#textarea").css("padding", margins + "px");
+            }
+        }
+
+        $(document).ready(function () {
+            debugger;
+            $('#hideButton').click(function () {
+                $(this).hide("slow"); // a curious disappearing button.
+            });
+        });
+    </script>
+    <style type="text/css">
+        .document {
+            width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+            border: solid 1px #cacaca;
+            position: relative;
+            margin-top: 5px;
+            background-color: white;
+            padding: 30px;
+        }
+
+        #textarea {
+            -moz-appearance: textfield-multiline;
+            -webkit-appearance: textarea;
+            border: 1px solid gray;
+            font: medium -moz-fixed;
+            font: -webkit-small-control;
+            height: 600px;
+            overflow: auto;
+            resize: both;
+            width: 800px;
+            float: left;
+        }
+
+        #htmlcode {
+            float: left;        
+            width: 400px;
+            height: 600px;
+        }        
+
+    </style>
+</head>
+<body>	
+    <h1>Editor in Browser</h1>
+    <a href="#" onclick="MakeBold();">Bold</a>&nbsp;|&nbsp;    
+    <a href="#" onclick="TextAlignCenter();">Aliniaza Text pe Centru</a>&nbsp;|&nbsp;    
+    <a href="#" onclick="TextAlignJustify();">Aliniaza Text Justify</a>&nbsp;|&nbsp;    
+    Font Size
+    <select id="font-size" onchange="ChangeFontSize();">
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+    </select>&nbsp;|&nbsp;    
+    Set Margins 
+    <input type="text" value="" id="margins" style="width: 50px;" onblur="SetMargins();" />px&nbsp;|&nbsp;
+    <a href="#" onclick="GetCode();">See HTML Code</a>
+    <br />
+    <div id="textarea" class="document" contenteditable>My first paragraph.</div>
+    <textarea cols="40" id="htmlcode">
+    </textarea>	
+</body>
+</html>
+
