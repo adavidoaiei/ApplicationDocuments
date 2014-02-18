@@ -21,7 +21,7 @@ using System.Web.Helpers;
 using System.Text;
 using System.Data;
 using System.IO;
-using Microsoft.Office.Interop.Word;
+//using Microsoft.Office.Interop.Word;
 
 
 namespace ActeAuto.Controllers
@@ -299,149 +299,149 @@ namespace ActeAuto.Controllers
             return string.Empty;
         }
 
-        //http://vivekcek.wordpress.com/2012/08/25/create-a-word-document-from-a-template-using-c-mail-merge/
-        [HttpPost]
-        public string PrinteazaDOC(FormCollection collection)
-        {
-            try
-            {
-                //if (Request.IsAuthenticated)
-                //{
-                JsonObject json = new JsonObject(collection[0]);
-                DocumentsTableAdapters.LogErrorTableAdapter adapter = new DocumentsTableAdapters.LogErrorTableAdapter();
-                Documents.LogErrorDataTable table = new Documents.LogErrorDataTable();
-                Documents.LogErrorRow row = table.NewLogErrorRow();
-                row.Message = json.ToString();
-                table.AddLogErrorRow(row);
-                adapter.Update(table);
-                string document = json["document"].ToString();
-                if (document == null)
-                    return "";
-                json.Remove("document");
+        ////http://vivekcek.wordpress.com/2012/08/25/create-a-word-document-from-a-template-using-c-mail-merge/
+        //[HttpPost]
+        //public string PrinteazaDOC(FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        //if (Request.IsAuthenticated)
+        //        //{
+        //        JsonObject json = new JsonObject(collection[0]);
+        //        DocumentsTableAdapters.LogErrorTableAdapter adapter = new DocumentsTableAdapters.LogErrorTableAdapter();
+        //        Documents.LogErrorDataTable table = new Documents.LogErrorDataTable();
+        //        Documents.LogErrorRow row = table.NewLogErrorRow();
+        //        row.Message = json.ToString();
+        //        table.AddLogErrorRow(row);
+        //        adapter.Update(table);
+        //        string document = json["document"].ToString();
+        //        if (document == null)
+        //            return "";
+        //        json.Remove("document");
 
-                string file = document + " " + Guid.NewGuid() + ".doc";
+        //        string file = document + " " + Guid.NewGuid() + ".doc";
 
-                //DocumentsTableAdapters.TemplatesDocumentsTableAdapter adapterTemplates = new DocumentsTableAdapters.TemplatesDocumentsTableAdapter();
-                //DocumentsTableAdapters.IssuedDocumentsTableAdapter adapterDocument = new DocumentsTableAdapters.IssuedDocumentsTableAdapter();
-                //Documents.IssuedDocumentsDataTable tableDocument = new Documents.IssuedDocumentsDataTable();
-                //Documents.IssuedDocumentsRow rowDocument = tableDocument.NewIssuedDocumentsRow();
-                //rowDocument.GuidName = file;
-                //rowDocument.Name = document;
-                //rowDocument.TemplateDocumentId = (adapterTemplates.GetIdByTemplate(document.Replace(" ", "_").ToLower())).Value;
-                //tableDocument.AddIssuedDocumentsRow(rowDocument);
-                //adapterDocument.Update(tableDocument);
-                //int? lastid = (int?)adapterDocument.GetLastInsertedId();
+        //        //DocumentsTableAdapters.TemplatesDocumentsTableAdapter adapterTemplates = new DocumentsTableAdapters.TemplatesDocumentsTableAdapter();
+        //        //DocumentsTableAdapters.IssuedDocumentsTableAdapter adapterDocument = new DocumentsTableAdapters.IssuedDocumentsTableAdapter();
+        //        //Documents.IssuedDocumentsDataTable tableDocument = new Documents.IssuedDocumentsDataTable();
+        //        //Documents.IssuedDocumentsRow rowDocument = tableDocument.NewIssuedDocumentsRow();
+        //        //rowDocument.GuidName = file;
+        //        //rowDocument.Name = document;
+        //        //rowDocument.TemplateDocumentId = (adapterTemplates.GetIdByTemplate(document.Replace(" ", "_").ToLower())).Value;
+        //        //tableDocument.AddIssuedDocumentsRow(rowDocument);
+        //        //adapterDocument.Update(tableDocument);
+        //        //int? lastid = (int?)adapterDocument.GetLastInsertedId();
 
-                //DocumentsTableAdapters.IssuedDocumentsDataTableAdapter adapterDataDocument = new DocumentsTableAdapters.IssuedDocumentsDataTableAdapter();
-                //Documents.IssuedDocumentsDataDataTable tableDataDocument = new Documents.IssuedDocumentsDataDataTable();
-                //foreach (string key in json.Keys)
-                //{
-                //    Documents.IssuedDocumentsDataRow rowDataDocument = tableDataDocument.NewIssuedDocumentsDataRow();
-                //    rowDataDocument.Field = key;
-                //    rowDataDocument.Value = json[key].ToString();
-                //    rowDataDocument.IdDocument = lastid.Value;
-                //    tableDataDocument.AddIssuedDocumentsDataRow(rowDataDocument);
-                //    adapterDataDocument.Update(tableDataDocument);
-                //}
+        //        //DocumentsTableAdapters.IssuedDocumentsDataTableAdapter adapterDataDocument = new DocumentsTableAdapters.IssuedDocumentsDataTableAdapter();
+        //        //Documents.IssuedDocumentsDataDataTable tableDataDocument = new Documents.IssuedDocumentsDataDataTable();
+        //        //foreach (string key in json.Keys)
+        //        //{
+        //        //    Documents.IssuedDocumentsDataRow rowDataDocument = tableDataDocument.NewIssuedDocumentsDataRow();
+        //        //    rowDataDocument.Field = key;
+        //        //    rowDataDocument.Value = json[key].ToString();
+        //        //    rowDataDocument.IdDocument = lastid.Value;
+        //        //    tableDataDocument.AddIssuedDocumentsDataRow(rowDataDocument);
+        //        //    adapterDataDocument.Update(tableDataDocument);
+        //        //}
 
-                string pdfTemplate = Server.MapPath("../Templates") + "\\" + document + "\\" + document + ".dotx";
+        //        string pdfTemplate = Server.MapPath("../Templates") + "\\" + document + "\\" + document + ".dotx";
 
-                string newFile = Server.MapPath("../Files") + "\\" + file;
-                //PdfReader pdfReader = new PdfReader(pdfTemplate);
-                //PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(
-                //    newFile, FileMode.Create));
-                //AcroFields pdfFormFields = pdfStamper.AcroFields;
-                //// set form pdfFormFields
-                //// The first worksheet and W-4 form
+        //        string newFile = Server.MapPath("../Files") + "\\" + file;
+        //        //PdfReader pdfReader = new PdfReader(pdfTemplate);
+        //        //PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(
+        //        //    newFile, FileMode.Create));
+        //        //AcroFields pdfFormFields = pdfStamper.AcroFields;
+        //        //// set form pdfFormFields
+        //        //// The first worksheet and W-4 form
 
-                //foreach (string key in json.Keys)
-                //{
-                //    if (!json[key].ToString().Contains("checkbox"))
-                //        pdfFormFields.SetField(key, json[key].ToString());
-                //    else if (json[key].ToString().Contains("checkbox"))
-                //    {
-                //        string[] value = json[key].ToString().Split(',');
-                //        if (value[1].Contains("true"))
-                //            pdfFormFields.SetField(key, "X");
-                //    }
-                //}
+        //        //foreach (string key in json.Keys)
+        //        //{
+        //        //    if (!json[key].ToString().Contains("checkbox"))
+        //        //        pdfFormFields.SetField(key, json[key].ToString());
+        //        //    else if (json[key].ToString().Contains("checkbox"))
+        //        //    {
+        //        //        string[] value = json[key].ToString().Split(',');
+        //        //        if (value[1].Contains("true"))
+        //        //            pdfFormFields.SetField(key, "X");
+        //        //    }
+        //        //}
 
-                //// flatten the form to remove editting options, set it to false
-                //// to leave the form open to subsequent manual edits
+        //        //// flatten the form to remove editting options, set it to false
+        //        //// to leave the form open to subsequent manual edits
 
-                //pdfStamper.FormFlattening = true;
-                //// close the pdf
+        //        //pdfStamper.FormFlattening = true;
+        //        //// close the pdf
 
-                //pdfStamper.Close();
+        //        //pdfStamper.Close();
 
-            Object oMissing = System.Reflection.Missing.Value;
-            Object oTemplatePath = pdfTemplate;
-            Application wordApp = new Application();
-            Microsoft.Office.Interop.Word.Document wordDoc = new Microsoft.Office.Interop.Word.Document();
-            wordDoc = wordApp.Documents.Add(ref oTemplatePath, ref oMissing, ref oMissing, ref oMissing);
-            foreach (Field myMergeField in wordDoc.Fields)
-            {
-                Range rngFieldCode = myMergeField.Code;
-                String fieldText = rngFieldCode.Text;
+        //    Object oMissing = System.Reflection.Missing.Value;
+        //    Object oTemplatePath = pdfTemplate;
+        //    Application wordApp = new Application();
+        //    Microsoft.Office.Interop.Word.Document wordDoc = new Microsoft.Office.Interop.Word.Document();
+        //    wordDoc = wordApp.Documents.Add(ref oTemplatePath, ref oMissing, ref oMissing, ref oMissing);
+        //    foreach (Field myMergeField in wordDoc.Fields)
+        //    {
+        //        Range rngFieldCode = myMergeField.Code;
+        //        String fieldText = rngFieldCode.Text;
 
-                // ONLY GETTING THE MAILMERGE FIELDS
+        //        // ONLY GETTING THE MAILMERGE FIELDS
 
-                if (fieldText.StartsWith(" MERGEFIELD"))
-                {
-                    // THE TEXT COMES IN THE FORMAT OF
-                    // MERGEFIELD  MyFieldName  \\* MERGEFORMAT
-                    // THIS HAS TO BE EDITED TO GET ONLY THE FIELDNAME "MyFieldName"
+        //        if (fieldText.StartsWith(" MERGEFIELD"))
+        //        {
+        //            // THE TEXT COMES IN THE FORMAT OF
+        //            // MERGEFIELD  MyFieldName  \\* MERGEFORMAT
+        //            // THIS HAS TO BE EDITED TO GET ONLY THE FIELDNAME "MyFieldName"
 
 
-                    Int32 endMerge = fieldText.IndexOf("\\");
-                    Int32 fieldNameLength = fieldText.Length - endMerge;
-                    String fieldName = fieldText.Substring(11, endMerge - 11);
+        //            Int32 endMerge = fieldText.IndexOf("\\");
+        //            Int32 fieldNameLength = fieldText.Length - endMerge;
+        //            String fieldName = fieldText.Substring(11, endMerge - 11);
 
-                    // GIVES THE FIELDNAMES AS THE USER HAD ENTERED IN .dot FILE
-                    fieldName = fieldName.Trim();
-                    // **** FIELD REPLACEMENT IMPLEMENTATION GOES HERE ****//
-                    // THE PROGRAMMER CAN HAVE HIS OWN IMPLEMENTATIONS HERE
-                    //if (fieldName == "Subsemnatul")
-                    //{
-                    if (!json[fieldName].ToString().Contains("checkbox")) {
-                        //        pdfFormFields.SetField(key, json[key].ToString());
-                        myMergeField.Select();
-                        wordApp.Selection.TypeText(json[fieldName].ToString());
-                    }
-                }
-            }
-            wordDoc.SaveAs(newFile);
-            //wordDoc.
-            //wordApp.Documents.Open(newFile);
-            wordDoc.Application.Quit();
+        //            // GIVES THE FIELDNAMES AS THE USER HAD ENTERED IN .dot FILE
+        //            fieldName = fieldName.Trim();
+        //            // **** FIELD REPLACEMENT IMPLEMENTATION GOES HERE ****//
+        //            // THE PROGRAMMER CAN HAVE HIS OWN IMPLEMENTATIONS HERE
+        //            //if (fieldName == "Subsemnatul")
+        //            //{
+        //            if (!json[fieldName].ToString().Contains("checkbox")) {
+        //                //        pdfFormFields.SetField(key, json[key].ToString());
+        //                myMergeField.Select();
+        //                wordApp.Selection.TypeText(json[fieldName].ToString());
+        //            }
+        //        }
+        //    }
+        //    wordDoc.SaveAs(newFile);
+        //    //wordDoc.
+        //    //wordApp.Documents.Open(newFile);
+        //    wordDoc.Application.Quit();
             
-            //wordApp.Application.Quit();
+        //    //wordApp.Application.Quit();
 
-            try
-            {
-                FileStream fs = new System.IO.FileStream(newFile, System.IO.FileMode.Open);
-                fs.Unlock(0, fs.Length);
-            }
-            catch (Exception ex)
-            {
-            }
+        //    try
+        //    {
+        //        FileStream fs = new System.IO.FileStream(newFile, System.IO.FileMode.Open);
+        //        fs.Unlock(0, fs.Length);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //    }
 
-            return "Files\\" + file;;
-                //}
-                //return string.Empty;
-            }
-            catch (Exception ex)
-            {
-                DocumentsTableAdapters.LogErrorTableAdapter adapter = new DocumentsTableAdapters.LogErrorTableAdapter();
-                Documents.LogErrorDataTable table = new Documents.LogErrorDataTable();
-                Documents.LogErrorRow row = table.NewLogErrorRow();
-                row.Message = ex.Message;
-                row.StackTrace = ex.StackTrace;
-                table.AddLogErrorRow(row);
-                adapter.Update(table);
-            }
-            return string.Empty;
-        }
+        //    return "Files\\" + file;;
+        //        //}
+        //        //return string.Empty;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DocumentsTableAdapters.LogErrorTableAdapter adapter = new DocumentsTableAdapters.LogErrorTableAdapter();
+        //        Documents.LogErrorDataTable table = new Documents.LogErrorDataTable();
+        //        Documents.LogErrorRow row = table.NewLogErrorRow();
+        //        row.Message = ex.Message;
+        //        row.StackTrace = ex.StackTrace;
+        //        table.AddLogErrorRow(row);
+        //        adapter.Update(table);
+        //    }
+        //    return string.Empty;
+        //}
 
         [HttpPost]
         public JsonObject Edit(int id)
@@ -615,83 +615,83 @@ namespace ActeAuto.Controllers
                 smtp.Send(mail);
         }
 
-        public static void Word2PDF(string fileName)
-        {
-            Microsoft.Office.Interop.Word.Application wordApplication = new Microsoft.Office.Interop.Word.Application();
-            Microsoft.Office.Interop.Word.Document wordDocument = null;
-            object paramSourceDocPath = fileName + @".doc";
-            object paramMissing = Type.Missing;
-            string paramExportFilePath = fileName + @".pdf";
-            WdExportFormat paramExportFormat = WdExportFormat.wdExportFormatPDF;
-            bool paramOpenAfterExport = false;
+        //public static void Word2PDF(string fileName)
+        //{
+        //    Microsoft.Office.Interop.Word.Application wordApplication = new Microsoft.Office.Interop.Word.Application();
+        //    Microsoft.Office.Interop.Word.Document wordDocument = null;
+        //    object paramSourceDocPath = fileName + @".doc";
+        //    object paramMissing = Type.Missing;
+        //    string paramExportFilePath = fileName + @".pdf";
+        //    WdExportFormat paramExportFormat = WdExportFormat.wdExportFormatPDF;
+        //    bool paramOpenAfterExport = false;
 
-            WdExportOptimizeFor paramExportOptimizeFor = WdExportOptimizeFor.wdExportOptimizeForPrint;
+        //    WdExportOptimizeFor paramExportOptimizeFor = WdExportOptimizeFor.wdExportOptimizeForPrint;
 
-            WdExportRange paramExportRange = WdExportRange.wdExportAllDocument;
-            int paramStartPage = 0;
+        //    WdExportRange paramExportRange = WdExportRange.wdExportAllDocument;
+        //    int paramStartPage = 0;
 
-            int paramEndPage = 0;
-            WdExportItem paramExportItem = WdExportItem.wdExportDocumentContent;
+        //    int paramEndPage = 0;
+        //    WdExportItem paramExportItem = WdExportItem.wdExportDocumentContent;
 
-            bool paramIncludeDocProps = true;
-            bool paramKeepIRM = true;
+        //    bool paramIncludeDocProps = true;
+        //    bool paramKeepIRM = true;
 
-            WdExportCreateBookmarks paramCreateBookmarks =
-            WdExportCreateBookmarks.wdExportCreateWordBookmarks;
+        //    WdExportCreateBookmarks paramCreateBookmarks =
+        //    WdExportCreateBookmarks.wdExportCreateWordBookmarks;
 
-            bool paramDocStructureTags = true;
-            bool paramBitmapMissingFonts = true;
+        //    bool paramDocStructureTags = true;
+        //    bool paramBitmapMissingFonts = true;
 
-            bool paramUseISO19005_1 = false;
+        //    bool paramUseISO19005_1 = false;
 
-            try
-            {
-                // Open the source document.
-                wordDocument = wordApplication.Documents.Open(
-                ref paramSourceDocPath, ref paramMissing, ref paramMissing,
-                ref paramMissing, ref paramMissing, ref paramMissing,
-                ref paramMissing, ref paramMissing, ref paramMissing,
-                ref paramMissing, ref paramMissing, ref paramMissing,
-                ref paramMissing, ref paramMissing, ref paramMissing,
-                ref paramMissing);
+        //    try
+        //    {
+        //        // Open the source document.
+        //        wordDocument = wordApplication.Documents.Open(
+        //        ref paramSourceDocPath, ref paramMissing, ref paramMissing,
+        //        ref paramMissing, ref paramMissing, ref paramMissing,
+        //        ref paramMissing, ref paramMissing, ref paramMissing,
+        //        ref paramMissing, ref paramMissing, ref paramMissing,
+        //        ref paramMissing, ref paramMissing, ref paramMissing,
+        //        ref paramMissing);
 
-                // Export it in the specified format.
-                if (wordDocument != null)
-                    wordDocument.ExportAsFixedFormat(paramExportFilePath,
-                    paramExportFormat, paramOpenAfterExport,
-                    paramExportOptimizeFor, paramExportRange, paramStartPage,
-                    paramEndPage, paramExportItem, paramIncludeDocProps,
-                    paramKeepIRM, paramCreateBookmarks, paramDocStructureTags,
-                    paramBitmapMissingFonts, paramUseISO19005_1,
-                    ref paramMissing);
-            }
-            catch (Exception ex)
-            {
+        //        // Export it in the specified format.
+        //        if (wordDocument != null)
+        //            wordDocument.ExportAsFixedFormat(paramExportFilePath,
+        //            paramExportFormat, paramOpenAfterExport,
+        //            paramExportOptimizeFor, paramExportRange, paramStartPage,
+        //            paramEndPage, paramExportItem, paramIncludeDocProps,
+        //            paramKeepIRM, paramCreateBookmarks, paramDocStructureTags,
+        //            paramBitmapMissingFonts, paramUseISO19005_1,
+        //            ref paramMissing);
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                // Respond to the error
-            }
-            finally
-            {
-                // Close and release the Document object.
-                if (wordDocument != null)
-                {
-                    wordDocument.Close(ref paramMissing, ref paramMissing,
-                    ref paramMissing);
-                    wordDocument = null;
-                }
-                // Quit Word and release the ApplicationClass object.
-                if (wordApplication != null)
-                {
-                    wordApplication.Quit(ref paramMissing, ref paramMissing,
-                    ref paramMissing);
-                    wordApplication = null;
-                }
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-            }
-        }
+        //        // Respond to the error
+        //    }
+        //    finally
+        //    {
+        //        // Close and release the Document object.
+        //        if (wordDocument != null)
+        //        {
+        //            wordDocument.Close(ref paramMissing, ref paramMissing,
+        //            ref paramMissing);
+        //            wordDocument = null;
+        //        }
+        //        // Quit Word and release the ApplicationClass object.
+        //        if (wordApplication != null)
+        //        {
+        //            wordApplication.Quit(ref paramMissing, ref paramMissing,
+        //            ref paramMissing);
+        //            wordApplication = null;
+        //        }
+        //        GC.Collect();
+        //        GC.WaitForPendingFinalizers();
+        //        GC.Collect();
+        //        GC.WaitForPendingFinalizers();
+        //    }
+        //}
     }
 
 }
