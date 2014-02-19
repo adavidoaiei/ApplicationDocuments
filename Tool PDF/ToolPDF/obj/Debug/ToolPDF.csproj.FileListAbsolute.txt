@@ -35,3 +35,14 @@ D:\Tool PDF\ToolPDF\obj\Debug\ToolPDF.csprojResolveAssemblyReference.cache
 D:\Tool PDF\ToolPDF\obj\Debug\ToolPDF.ToolPDF.resources
 D:\Tool PDF\ToolPDF\obj\Debug\ToolPDF.Properties.Resources.resources
 D:\Tool PDF\ToolPDF\obj\Debug\ToolPDF.csproj.GenerateResource.Cache
+D:\Documents\Tool PDF\ToolPDF\bin\Debug\ToolPDF.exe.config
+D:\Documents\Tool PDF\ToolPDF\obj\Debug\ToolPDF.exe
+D:\Documents\Tool PDF\ToolPDF\obj\Debug\ToolPDF.pdb
+D:\Documents\Tool PDF\ToolPDF\bin\Debug\ToolPDF.exe
+D:\Documents\Tool PDF\ToolPDF\bin\Debug\ToolPDF.pdb
+D:\Documents\Tool PDF\ToolPDF\bin\Debug\HtmlAgilityPack.pdb
+D:\Documents\Tool PDF\ToolPDF\bin\Debug\HtmlAgilityPack.xml
+D:\Documents\Tool PDF\ToolPDF\obj\Debug\ToolPDF.csprojResolveAssemblyReference.cache
+D:\Documents\Tool PDF\ToolPDF\obj\Debug\ToolPDF.ToolPDF.resources
+D:\Documents\Tool PDF\ToolPDF\obj\Debug\ToolPDF.Properties.Resources.resources
+D:\Documents\Tool PDF\ToolPDF\obj\Debug\ToolPDF.csproj.GenerateResource.Cache
