@@ -226,7 +226,6 @@
     <Content Include="Documents.xsc">
       <DependentUpon>Documents.xsd</DependentUpon>
     </Content>
-    <Content Include="WebForm1.aspx" />
     <None Include="Documents.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -328,13 +327,6 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="TemplatesDocuments.cs" />
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\" />
