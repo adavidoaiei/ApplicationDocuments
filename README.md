@@ -17,5 +17,5 @@ I was annoyed by limitation of a open source library for generation PDF, but thi
 </p>
 <p>
 <p>
-I was dissapointed too that i don't have knowledge to implement some feature like in Google Docs. Maybe i will find a utility of this project in the future. 
+I was dissapointed too that i don't have knowledge to implement some features like in Google Docs. Maybe i will find a utility of this project in the future. 
 </p>
