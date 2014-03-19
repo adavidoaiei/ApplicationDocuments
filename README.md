@@ -19,3 +19,6 @@ I was annoyed by limitation of a open source library for generation PDF, but thi
 <p>
 I was dissapointed too that i don't have knowledge to implement some features like in Google Docs. Maybe i will find a utility of this project in the future. 
 </p>
+<p>
+I presented this project to someone from a the business incubator PentaLabs from Pentalog but we reached some controversy, I had the feeling that they are against for no reason and rennounced to convince them that my idea is good.
+</p>
