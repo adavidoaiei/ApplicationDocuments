@@ -7,18 +7,3 @@ The main idea of the project is follow that you have an administration module wh
 <p>
 This project was developed after hackaton model, in the day i was working for my job like employes, and night i was coded at this project, that code was wrote in hurry to work but contains some brilliant ideas and research, it's a prototype this is reason for which it's not the most clean code.
 </p>
-<p>
-This project has a hymn a melody which kept awake to write code :)<br/>
-"20 dollars in my pocket song"<br/>
-https://www.youtube.com/watch?v=oOh6wb9l00g<br/>
-</p>
-<p>
-I was annoyed by limitation of a open source library for generation PDF, but this could be replaced by generation of HTML for print like Google Docs.
-</p>
-<p>
-<p>
-I was dissapointed too that i don't have knowledge to implement some features like in Google Docs. Maybe i will find a utility of this project in the future. 
-</p>
-<p>
-I presented this project to someone from a business incubator PentaLabs from Pentalog but we reached some controversy, I had the feeling that they are against without clear reasons they come only with general arguments againts project which doesn't have nothing in common with idea and implementation and i give up to convince them that my idea is good.
-</p>
