@@ -41,10 +41,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
-      <HintPath>C:\Users\Adavidoaiei\Downloads\PdfGenerator_CS\PdfGenerator_CS\PdfGenerator\bin\Release\itextsharp.dll</HintPath>
+      <HintPath>bin\Release\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="JSON Toolkit %28Portable%29">
-      <HintPath>C:\Users\Adavidoaiei\Downloads\JSON Toolkit (Portable)\JSON Toolkit (Portable).dll</HintPath>
+      <HintPath>bin\JSON Toolkit (Portable).dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
