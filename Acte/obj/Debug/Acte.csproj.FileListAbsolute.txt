@@ -82,8 +82,6 @@ D:\Documents\Acte\bin\System.Web.WebPages.Razor.dll
 D:\Documents\Acte\bin\WebGrease.dll
 D:\Documents\Acte\bin\WebMatrix.Data.dll
 D:\Documents\Acte\bin\WebMatrix.WebData.dll
-D:\Documents\Acte\bin\Cyotek.GhostScript.pdb
-D:\Documents\Acte\bin\Cyotek.GhostScript.PdfConversion.pdb
 D:\Documents\Acte\bin\EntityFramework.xml
 D:\Documents\Acte\bin\Newtonsoft.Json.xml
 D:\Documents\Acte\bin\System.Web.Helpers.xml

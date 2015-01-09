@@ -40,12 +40,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cyotek.GhostScript">
-      <HintPath>C:\Users\Adavidoaiei\Downloads\Cyotek.GhostScript\Cyotek.GhostScript\bin\Debug\Cyotek.GhostScript.dll</HintPath>
-    </Reference>
-    <Reference Include="Cyotek.GhostScript.PdfConversion">
-      <HintPath>C:\Users\Adavidoaiei\Downloads\Cyotek.GhostScript.PdfConversion\Cyotek.GhostScript.PdfConversion\bin\Debug\Cyotek.GhostScript.PdfConversion.dll</HintPath>
-    </Reference>
     <Reference Include="itextsharp">
       <HintPath>C:\Users\Adavidoaiei\Downloads\PdfGenerator_CS\PdfGenerator_CS\PdfGenerator\bin\Release\itextsharp.dll</HintPath>
     </Reference>
