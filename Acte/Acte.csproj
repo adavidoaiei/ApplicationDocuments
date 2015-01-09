@@ -193,7 +193,6 @@
     <Compile Include="Models\Mesaj.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="test.html" />
     <Content Include="Windows\CreateTemplate.html" />
   </ItemGroup>
   <ItemGroup>
