@@ -119,3 +119,4 @@ D:\Documents\Administrare\obj\Debug\Administrare.csprojResolveAssemblyReference.
 D:\Documents\Administrare\obj\Debug\Administrare.csproj.ResolveComReference.cache
 D:\Documents\Administrare\obj\Debug\Administrare.dll
 D:\Documents\Administrare\obj\Debug\Administrare.pdb
+D:\Documents\Administrare\bin\Administrare.dll.config

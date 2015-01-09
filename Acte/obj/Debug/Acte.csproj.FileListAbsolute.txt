@@ -72,12 +72,7 @@ D:\Documents\Acte\bin\EntityFramework.dll
 D:\Documents\Acte\bin\Microsoft.Web.Infrastructure.dll
 D:\Documents\Acte\bin\Microsoft.Web.WebPages.OAuth.dll
 D:\Documents\Acte\bin\Newtonsoft.Json.dll
-D:\Documents\Acte\bin\System.Net.Http.dll
-D:\Documents\Acte\bin\System.Net.Http.Formatting.dll
-D:\Documents\Acte\bin\System.Net.Http.WebRequest.dll
 D:\Documents\Acte\bin\System.Web.Helpers.dll
-D:\Documents\Acte\bin\System.Web.Http.dll
-D:\Documents\Acte\bin\System.Web.Http.WebHost.dll
 D:\Documents\Acte\bin\System.Web.Mvc.dll
 D:\Documents\Acte\bin\System.Web.Optimization.dll
 D:\Documents\Acte\bin\System.Web.Razor.dll
@@ -91,12 +86,7 @@ D:\Documents\Acte\bin\Cyotek.GhostScript.pdb
 D:\Documents\Acte\bin\Cyotek.GhostScript.PdfConversion.pdb
 D:\Documents\Acte\bin\EntityFramework.xml
 D:\Documents\Acte\bin\Newtonsoft.Json.xml
-D:\Documents\Acte\bin\System.Net.Http.xml
-D:\Documents\Acte\bin\System.Net.Http.Formatting.xml
-D:\Documents\Acte\bin\System.Net.Http.WebRequest.xml
 D:\Documents\Acte\bin\System.Web.Helpers.xml
-D:\Documents\Acte\bin\System.Web.Http.xml
-D:\Documents\Acte\bin\System.Web.Http.WebHost.xml
 D:\Documents\Acte\bin\System.Web.Mvc.xml
 D:\Documents\Acte\bin\System.Web.Razor.xml
 D:\Documents\Acte\bin\System.Web.WebPages.xml
@@ -111,3 +101,4 @@ D:\Documents\Acte\bin\DotNetOpenAuth.OAuth.Consumer.xml
 D:\Documents\Acte\bin\DotNetOpenAuth.OAuth.xml
 D:\Documents\Acte\bin\DotNetOpenAuth.OpenId.xml
 D:\Documents\Acte\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+D:\Documents\Acte\bin\ActeAuto.dll.config
