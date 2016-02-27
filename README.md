@@ -1,7 +1,7 @@
 Documents
 =========
 <p>
-This was project from my own startup which failed, i don't follow anymore that path, i changed my scope to be a good proffesional
+This was project is from my own startup which failed, i don't follow anymore that path, i changed my scope to be a good proffesional
 </p>
 <p>
 This code was developed fast in hackaton way so the code doesn't respect the best practices.
